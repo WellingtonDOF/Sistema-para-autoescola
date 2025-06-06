@@ -1,0 +1,119 @@
+
+    <mat-card>
+    <div>
+        <h1>{{btnTitulo}}</h1>
+    </div>
+
+    <div>
+        @if(usuarioDetalhes){
+        <form (submit)="$event.preventDefault()">
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Nome: </mat-label>
+                    <input matInput type="text" value="{{usuarioDetalhes.nomeCompleto}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>CPF: </mat-label>
+                    <input matInput type="text" value="{{usuarioDetalhes.cpf}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Telefone: </mat-label>
+                    <input matInput type="text" value="{{usuarioDetalhes.telefone}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Email: </mat-label>
+                    <input matInput type="text" value="{{usuarioDetalhes.email}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Endereço: </mat-label>
+                    <input matInput type="text" value="{{usuarioDetalhes.endereco}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Data de Nascimento: </mat-label>
+                    <input matInput type="text" value="{{usuarioDetalhes.dataNascimento}}" disabled>
+                </mat-form-field>
+            </div>
+
+            @if(!isAluno(usuarioDetalhes)) 
+            {
+                <div class="input_box">
+                    <mat-form-field>
+                        <mat-label>Data de Admissão: </mat-label>
+                        <input matInput type="text" value="{{usuarioDetalhes.dataAdmissao}}" disabled>
+                    </mat-form-field>
+                </div>
+            }
+
+            @if(!isAluno(usuarioDetalhes)){
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Categoria CNH Desejada: </mat-label>
+                    <input matInput type="text" value="{{usuarioDetalhes.categoriaCnh}}" disabled>
+                </mat-form-field>
+            </div>
+            }
+
+            @if(isAluno(usuarioDetalhes)) 
+            {
+                <div class="input_box">
+                  <mat-form-field>
+                    <mat-label>Pagamento: </mat-label>
+                    <input matInput type="text" [value]="usuarioDetalhes.statusPagamento" disabled>
+                  </mat-form-field>
+                </div>
+              
+                <div class="input_box">
+                  <mat-form-field>
+                    <mat-label>Situação Curso: </mat-label>
+                    <input matInput type="text" [value]="usuarioDetalhes.statusCurso" disabled>
+                  </mat-form-field>
+                </div>
+            }
+          
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Tipo de Usuário: </mat-label>
+                    <input matInput type="text" value="{{usuarioDetalhes.tipoUsuario}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Status: </mat-label>
+                    <input matInput type="text" value="{{usuarioDetalhes.status}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="btn-box">
+                
+                @if(exibirVoltarMatricula){
+                    <button mat-raised-button (click)="voltarParaMatriculas()">Voltar</button>
+                }@else{
+                    <button (click)="InativaUsuario()" mat-raised-button color="warn">{{btnAcao}}</button>
+
+                    @if(tipoCadastro === 'aluno'){
+                        <button mat-raised-button routerLink="/aluno">Voltar</button>
+                    } @else {
+                        <button mat-raised-button routerLink="/instrutor">Voltar</button>
+                    }
+                }
+            </div>
+        </form>
+        }
+    </div>
+</mat-card>

@@ -1,0 +1,119 @@
+.parcela-box {
+  margin-bottom: 20px;
+}
+
+.parcela-box h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filtros-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.input_box {
+  min-width: 300px;
+}
+
+.acoes-rapidas {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.vencendo-grupo {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.dias-input {
+  width: 80px;
+}
+
+.custom-buttonEdit {
+  background-color: #2196f3;
+  color: white;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-warning {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-secondary {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+.vencida {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.atraso {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.text-muted {
+  color: #999;
+}
+
+.acoes-coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.acoes-coluna button {
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mat-mdc-cell,
+.mat-mdc-header-cell {
+  padding: 12px;
+}
+
+@media (max-width: 768px) {
+  .filtros-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .acoes-rapidas {
+    justify-content: center;
+  }
+
+  .input_box {
+    min-width: auto;
+  }
+}

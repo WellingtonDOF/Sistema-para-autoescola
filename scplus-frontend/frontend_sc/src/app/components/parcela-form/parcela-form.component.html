@@ -1,0 +1,89 @@
+<mat-card>
+    <div>
+        <h1>{{btnTitulo}}</h1>
+    </div>
+
+    <form [formGroup]="parcelaForm" (ngSubmit)="submit()">
+        
+        @if(!dadosParcela) {
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>ID do Pagamento</mat-label>
+                    <input matInput type="number" formControlName="pagamentoId">
+                    @if(parcelaForm.get('pagamentoId')?.invalid && parcelaForm.get('pagamentoId')?.touched) {
+                        <mat-error>{{getErrorMessage('ID do Pagamento')}}</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Número da Parcela</mat-label>
+                    <input matInput type="number" formControlName="numeroParcela" min="1">
+                    @if(parcelaForm.get('numeroParcela')?.invalid && parcelaForm.get('numeroParcela')?.touched) {
+                        <mat-error>{{getErrorMessage('Número da Parcela')}}</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+        }
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Valor</mat-label>
+                <input matInput type="number" step="0.01" formControlName="valor" placeholder="0,00">
+                @if(parcelaForm.get('valor')?.invalid && parcelaForm.get('valor')?.touched) {
+                    <mat-error>{{getErrorMessage('Valor')}}</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Data de Vencimento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dataVencimento">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                @if(parcelaForm.get('dataVencimento')?.invalid && parcelaForm.get('dataVencimento')?.touched) {
+                    <mat-error>{{getErrorMessage('Data de Vencimento')}}</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Juros</mat-label>
+                <input matInput type="number" step="0.01" formControlName="juros" placeholder="0,00">
+                @if(parcelaForm.get('juros')?.invalid && parcelaForm.get('juros')?.touched) {
+                    <mat-error>{{getErrorMessage('Juros')}}</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Multa</mat-label>
+                <input matInput type="number" step="0.01" formControlName="multa" placeholder="0,00">
+                @if(parcelaForm.get('multa')?.invalid && parcelaForm.get('multa')?.touched) {
+                    <mat-error>{{getErrorMessage('Multa')}}</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Observação</mat-label>
+                <textarea matInput formControlName="observacao" placeholder="Observações sobre a parcela"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="btn-box">
+            <button mat-raised-button color="primary" type="submit" [disabled]="parcelaForm.invalid">
+                {{btnAcao}}
+            </button>
+            
+            <button mat-raised-button type="button" routerLink="/parcela">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</mat-card>

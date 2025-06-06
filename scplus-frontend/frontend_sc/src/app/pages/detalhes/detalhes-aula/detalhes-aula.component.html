@@ -1,0 +1,27 @@
+<mat-card>
+    <div>
+        <h1>{{btnTitulo}}</h1>
+    </div>
+
+    <div>
+        <form (submit)="$event.preventDefault()">
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Tipo da Aula: </mat-label>
+                    <input matInput type="text" value="{{aula?.tipoAula}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Descrição: </mat-label>
+                    <textarea matInput type="text" value="{{aula?.descricao}}" disabled></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="btn-box">
+                <button mat-raised-button routerLink="/aula">Voltar</button>
+            </div>
+        </form>
+    </div>
+</mat-card>

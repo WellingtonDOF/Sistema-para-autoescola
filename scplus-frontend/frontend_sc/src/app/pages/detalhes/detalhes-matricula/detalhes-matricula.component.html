@@ -1,0 +1,63 @@
+
+<mat-card>
+    <div>
+        <h1>{{btnTitulo}}</h1>
+    </div>
+
+    <div>
+        @if(matriculaDetalhes){
+        <form (submit)="$event.preventDefault()">
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>CPF: </mat-label>
+                    <input matInput type="text" value="{{matriculaDetalhes.alunoCpf}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Inicio da Matrícula: </mat-label>
+                    <input matInput type="text" value="{{matriculaDetalhes.dataInicio}}" disabled>
+                </mat-form-field>
+            </div>
+            
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Fim da Matrícula: </mat-label>
+                    @if(dataFimMinima){
+                        <input matInput type="text" value="Não definido" disabled>
+                    }@else {
+                        <input matInput type="text" value="{{matriculaDetalhes.dataFim}}" disabled>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Plano Contratado: </mat-label>
+                    <input matInput type="text" value="{{matriculaDetalhes.categoriaPlano}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Quantidade Total de Aulas: </mat-label>
+                    <input matInput type="text" value="{{matriculaDetalhes.quantidadeAulaTotal}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Situação Matrícula: </mat-label>
+                    <input matInput type="text" value="{{matriculaDetalhes.statusMatricula}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="btn-box">
+                <button (click)="InativaMatricula()" mat-raised-button color="warn">{{btnAcao}}</button>
+                <button mat-raised-button routerLink="/matricula">Voltar</button>
+            </div>
+        </form>
+        }
+    </div>
+</mat-card>

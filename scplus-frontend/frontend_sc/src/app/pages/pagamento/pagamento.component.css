@@ -1,0 +1,77 @@
+.pagamento-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.filtros-box {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input_box {
+  min-width: 200px;
+}
+
+.custom-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.custom-buttonEdit {
+  background-color: #2196f3;
+  color: white;
+  margin-left: 5px;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-warning {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.status-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-secondary {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mat-mdc-cell,
+.mat-mdc-header-cell {
+  padding: 12px;
+}
+
+button {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}

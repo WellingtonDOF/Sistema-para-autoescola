@@ -1,0 +1,5 @@
+<div>
+    @if(veiculo){
+    <app-veiculo-form [btnAcao]="btnAcao" [btnTitulo]="btnTitulo" [dadosVeiculo]="veiculo" (onSubmitUpdate)="editarVeiculo($event)"></app-veiculo-form>
+    }
+</div>

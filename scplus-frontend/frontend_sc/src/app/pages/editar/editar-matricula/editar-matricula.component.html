@@ -1,0 +1,5 @@
+<div>
+    @if(matricula){
+    <app-matricula-form [btnAcao]="btnAcao" [btnTitulo]="btnTitulo" [dadosMatricula]="matricula" (onSubmitUpdate)="editarMatricula($event)"></app-matricula-form>
+    }
+</div>

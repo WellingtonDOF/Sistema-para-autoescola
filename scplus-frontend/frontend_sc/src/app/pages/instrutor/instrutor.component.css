@@ -1,0 +1,21 @@
+.mat-mdc-raised-button.custom-button {
+    --mdc-protected-button-container-color: #2c8dee; /* Cor de fundo */
+    --mdc-protected-button-label-text-color: #ffffff;
+}
+
+.mat-mdc-raised-button.custom-buttonEdit {
+    --mdc-protected-button-container-color: #9489f5; /* Cor de fundo */
+    --mdc-protected-button-label-text-color: #ffffff;
+    margin: 0px 8px 0px 0px;
+
+}
+
+.instrutor-box{
+    width: 100%;
+    gap: 15px;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: left;
+    margin-bottom: 2rem;
+}

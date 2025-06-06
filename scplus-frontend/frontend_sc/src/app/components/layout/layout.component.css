@@ -1,0 +1,399 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 280px;
+  background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  box-shadow: 3px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidenav-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: #ffd700;
+}
+
+.logo-text {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: white !important; /* Forçar branco */
+}
+
+.nav-list {
+  padding: 16px 0;
+}
+
+.nav-item-container {
+  margin-bottom: 4px;
+}
+
+/* TEXTOS DO SIDEBAR EM BRANCO */
+.nav-item {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 48px;
+  color: white !important; /* Forçar branco */
+  overflow: hidden;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateX(4px);
+  color: white !important; /* Manter branco no hover */
+}
+
+.nav-item.expandable {
+  position: relative;
+}
+
+/* ÍCONES EM BRANCO */
+.nav-item mat-icon {
+  color: white !important;
+}
+
+.expand-icon {
+  position: absolute;
+  right: 16px;
+  transition: transform 0.3s ease;
+  color: white !important; /* Ícone de expansão em branco */
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: rgba(0,0,0,0.1);
+  margin: 0 12px;
+  border-radius: 0 0 8px 8px;
+}
+
+.submenu.expanded {
+  max-height: 200px;
+}
+
+/* SUBITENS EM BRANCO */
+.nav-subitem {
+  padding-left: 56px;
+  min-height: 40px;
+  font-size: 14px;
+  color: white !important; /* Mudado de rgba(255,255,255,0.8) para branco */
+  border-radius: 4px;
+  margin: 4px 8px;
+}
+
+.nav-subitem:hover {
+  background: rgba(255,255,255,0.1);
+  color: white !important; /* Manter branco no hover */
+}
+
+.user-section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* SEÇÃO DO USUÁRIO EM BRANCO */
+.user-item {
+  margin: 0 12px;
+  border-radius: 8px;
+  min-height: 48px;
+  color: white !important; /* Forçar branco */
+}
+
+.user-item:hover {
+  background: rgba(255,255,255,0.1);
+  color: white !important; /* Manter branco no hover */
+}
+
+.user-item mat-icon {
+  color: white !important; /* Ícones da seção usuário em branco */
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.top-toolbar {
+  background: white;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.menu-button {
+  margin-right: 16px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.page-content {
+  flex: 1;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 0;
+}
+
+/* FOOTER COMPACTO */
+.modern-footer {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  flex-shrink: 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 150px;
+}
+
+.footer-section h4 {
+  color: #ffd700;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.footer-logo mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: #ffd700;
+}
+
+.footer-logo span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.footer-description {
+  color: rgba(255,255,255,0.8);
+  line-height: 1.3;
+  margin: 0;
+  font-size: 12px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 4px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 12px;
+}
+
+.footer-links a:hover {
+  color: #ffd700;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
+}
+
+.contact-item mat-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+  color: #ffd700;
+}
+
+.schedule p {
+  margin: 4px 0;
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
+}
+
+.schedule strong {
+  color: white;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.1);
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
+}
+
+.social-links {
+  display: flex;
+  gap: 4px;
+}
+
+.social-links button {
+  color: rgba(255,255,255,0.8);
+  transition: color 0.3s ease;
+  width: 32px;
+  height: 32px;
+}
+
+.social-links button mat-icon {
+  font-size: 16px;
+}
+
+.social-links button:hover {
+  color: #ffd700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  
+  .footer-section {
+    min-width: auto;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 8px 16px;
+  }
+  
+  .page-content {
+    padding: 15px;
+  }
+}
+
+/* ESTILOS PARA ITENS ATIVOS - EM BRANCO COM DESTAQUE DOURADO */
+.nav-item.mat-mdc-list-item.mdc-list-item--activated {
+  background: rgba(255,255,255,0.15);
+  color: #ffd700 !important; /* Dourado para item ativo */
+}
+
+.nav-item.mat-mdc-list-item.mdc-list-item--activated mat-icon {
+  color: #ffd700 !important; /* Ícone dourado para item ativo */
+}
+
+.nav-subitem.mat-mdc-list-item.mdc-list-item--activated {
+  background: rgba(255,255,255,0.1);
+  color: #ffd700 !important; /* Dourado para subitem ativo */
+}
+
+/* CORREÇÕES ADICIONAIS PARA GARANTIR TEXTO BRANCO */
+.mat-mdc-list-item {
+  color: white !important;
+}
+
+.mat-mdc-list-item .mdc-list-item__primary-text {
+  color: white !important;
+}
+
+.mat-mdc-list-item-icon {
+  color: white !important;
+}
+
+/* Texto dos spans dentro dos itens */
+.nav-item span,
+.nav-subitem span,
+.user-item span {
+  color: white !important;
+}
+
+.auth-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Azul */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+/* Estilos para o app container */
+.app-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}

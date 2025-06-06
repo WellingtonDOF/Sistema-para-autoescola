@@ -1,0 +1,61 @@
+<mat-card>
+    <div class="veiculo-box">
+        <button [routerLink]="['/cadastro-veiculo']" mat-raised-button class="custom-button">Cadastrar novo Veículo</button>
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label for="">Procurar:</mat-label>
+                <input matInput type="text" placeholder="Qual registro está buscando? [Placa | Categoria]" (input)="search($event)">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <table mat-table [dataSource]="veiculos" class="mat-elevation-z8">
+        <ng-container matColumnDef="Situacao">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let veiculos">
+            @if(veiculos.statusVeiculo == "Ativo"){
+                <div>
+                    <img src="images/active.png" alt="bolinha verde com simbolo check" style="height: 15px; width: 15px;">
+                </div>
+            }@else{
+                <div>
+                    <img src="images/inactive.png" alt="bolinha vermelha com simbolo x" style="height: 15px; width: 15px;">                           
+                </div>
+            }         
+        </td>
+        </ng-container>
+    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Placa">
+        <th mat-header-cell *matHeaderCellDef>Placa</th>
+        <td mat-cell *matCellDef="let veiculos"> {{veiculos.placa}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Categoria">
+        <th mat-header-cell *matHeaderCellDef>Categoria</th>
+        <td mat-cell *matCellDef="let veiculos"> {{veiculos.categoria}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="DataAquisicao">
+            <th mat-header-cell *matHeaderCellDef>Data de Aquisição</th>
+            <td mat-cell *matCellDef="let veiculos"> {{veiculos.dataAquisicao}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Ações">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let veiculos"> 
+                <button routerLink="/editarveiculo/{{veiculos.id}}" mat-raised-button class="custom-buttonEdit">Editar</button>
+                <button routerLink="/detalhesveiculo/{{veiculos.id}}" mat-raised-button>Detalhes</button> 
+        </ng-container>
+
+        <ng-container matColumnDef="Excluir">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let veiculos">
+                <button mat-raised-button color="warn">Excluir</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colums"></tr>
+        <tr mat-row *matRowDef="let row; columns: colums;"></tr>
+    </table>
+</mat-card>

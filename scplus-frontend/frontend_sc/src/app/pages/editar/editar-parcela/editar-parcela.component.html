@@ -1,0 +1,8 @@
+@if(parcela) {
+    <app-parcela-form 
+        [btnAcao]="btnAcao" 
+        [btnTitulo]="btnTitulo" 
+        [dadosParcela]="parcela" 
+        (onSubmitUpdate)="editarParcela($event)">
+    </app-parcela-form>
+}

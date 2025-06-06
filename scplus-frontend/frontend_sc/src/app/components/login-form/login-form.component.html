@@ -1,0 +1,99 @@
+<div class="login-container">
+  <mat-card appearance="outlined" class="login-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h1>Auto Escola SC+</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+        Acesse sua conta
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #loginFormRef="ngForm" (submit)="$event.preventDefault()">
+        
+        <div class="input_box">
+          <mat-form-field>
+            <mat-label>CPF:</mat-label>
+            <input 
+              matInput 
+              type="text" 
+              formControlName="cpf" 
+              placeholder="Insira seu CPF" 
+              mask="000.000.000-00" 
+              required>
+            <mat-icon matSuffix>person</mat-icon>
+            @if (loginForm.get('cpf')?.hasError('required') && loginForm.get('cpf')?.touched) {
+              <mat-error>CPF é obrigatório</mat-error>
+            }
+            @if (loginForm.get('cpf')?.hasError('invalidCpf') && loginForm.get('cpf')?.touched) {
+              <mat-error>CPF inválido</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="input_box">
+          <mat-form-field>
+            <mat-label>Senha:</mat-label>
+            <input 
+              matInput 
+              [type]="hideSenha ? 'password' : 'text'" 
+              formControlName="senha" 
+              placeholder="Insira sua senha" 
+              required>
+            <button 
+              mat-icon-button 
+              matSuffix 
+              type="button"
+              (click)="toggleSenha($event)"
+              [attr.aria-label]="hideSenha ? 'Mostrar senha' : 'Ocultar senha'">
+              <mat-icon>{{hideSenha ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            @if (loginForm.get('senha')?.hasError('required') && loginForm.get('senha')?.touched) {
+              <mat-error>Senha é obrigatória</mat-error>
+            }
+            @if (loginForm.get('senha')?.hasError('minlength') && loginForm.get('senha')?.touched) {
+              <mat-error>Senha deve ter pelo menos 6 caracteres</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="forgot-password">
+          <button 
+            type="button" 
+            mat-button 
+            color="primary" 
+            (click)="onForgotPassword()">
+            Esqueci minha senha
+          </button>
+        </div>
+
+        <div class="btn-box">
+          <button 
+            type="submit" 
+            [disabled]="!loginForm.valid || isLoading" 
+            mat-raised-button 
+            class="custom-button login-button">
+            @if (isLoading) {
+              Entrando...
+            } @else {
+              Entrar
+            }
+          </button>
+        </div>
+
+      </form>
+    </mat-card-content>
+
+    <!--
+    <mat-card-actions style="align-items: center;">
+      <p class="register-link">
+        Não tem uma conta? 
+        <button mat-button color="primary" routerLink="/cadastro">
+          Cadastre-se aqui
+        </button>
+      </p>
+    </mat-card-actions>-->
+
+  </mat-card>
+</div>

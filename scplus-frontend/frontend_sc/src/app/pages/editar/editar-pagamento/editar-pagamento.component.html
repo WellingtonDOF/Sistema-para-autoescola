@@ -1,0 +1,8 @@
+@if(pagamento) {
+    <app-pagamento-form 
+        [btnAcao]="btnAcao" 
+        [btnTitulo]="btnTitulo" 
+        [dadosPagamento]="pagamento" 
+        (onSubmitUpdate)="editarPagamento($event)">
+    </app-pagamento-form>
+}

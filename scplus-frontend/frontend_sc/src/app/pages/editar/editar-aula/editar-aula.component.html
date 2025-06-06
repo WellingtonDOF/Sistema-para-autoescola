@@ -1,0 +1,6 @@
+<div>
+    <!-- Se não colocar esse IF ele recarrega a pagina antes de buscar aluno no service, e aluno ainda está vazio -->
+    @if(aula) {
+        <app-aula-form [btnAcao]="btnAcao" [btnTitulo]="btnTitulo" [dadosAula]="aula" (onSubmitUpdate)="editarAula($event)"></app-aula-form>
+    }
+</div>

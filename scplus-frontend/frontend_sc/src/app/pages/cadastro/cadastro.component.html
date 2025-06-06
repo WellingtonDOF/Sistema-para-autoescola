@@ -1,0 +1,12 @@
+
+@if(tipoCadastro === 'aluno'){
+    <div>
+        <app-aluno-form [btnAcao]="btnAcao" [btnTitulo]="btnTitulo" [tipoCadastro]="tipoCadastro" (onSubmit)="handleFormData($event)"></app-aluno-form>
+    </div>
+}
+
+@if(tipoCadastro === 'instrutor'){
+    <div>
+        <app-aluno-form [btnAcao]="btnAcao" [btnTitulo]="btnTitulo" [tipoCadastro]="tipoCadastro" (onSubmit)="handleFormData($event)"></app-aluno-form>
+    </div>
+}

@@ -1,0 +1,164 @@
+
+.login-card {
+  width: 100%;
+  max-width: 600px; /* AUMENTADO DE 500px PARA 600px */
+  padding: 40px 60px; /* AUMENTADO padding lateral de 40px para 60px */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  margin: auto;
+  overflow-y: auto;
+}
+
+.login-card mat-card-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.login-card h1 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.login-card mat-card-subtitle {
+  color: #666;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.mat-mdc-raised-button.custom-button {
+  --mdc-protected-button-container-color: #52a6fa;
+  --mdc-protected-button-label-text-color: #f7f7f7;
+}
+
+.mat-mdc-button-base {
+  margin: 8px 8px 0px 0px;
+}
+
+mat-error {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.input_box {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.input_box mat-form-field {
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Inputs com tamanho normal */
+.input_box mat-form-field input {
+  font-size: 16px !important;
+  padding: 2px !important;
+  min-height: 20px !important;
+}
+
+/* Labels menores */
+.input_box mat-form-field .mat-mdc-form-field-label {
+  font-size: 14px !important;
+}
+
+.forgot-password {
+    margin-top: 8px;
+    text-align: right;
+}
+
+.forgot-password button {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: -25px;
+}
+
+.login-button {
+  width: 100%;
+  height: 44px;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.register-link {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.register-link button {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Snackbar styles */
+::ng-deep .success-snackbar {
+  background-color: #4caf50 !important;
+  color: white !important;
+}
+
+::ng-deep .error-snackbar {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+::ng-deep .warning-snackbar {
+  background-color: #ff9800 !important;
+  color: white !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 15px;
+  }
+  
+  .login-card {
+    max-width: 100%;
+    padding: 30px 40px; /* MANTÉM padding lateral generoso em mobile */
+    margin: 10px;
+  }
+  
+  .login-card h1 {
+    font-size: 22px;
+  }
+  
+  .login-card mat-card-subtitle {
+    font-size: 13px;
+  }
+  
+  .login-button {
+    height: 42px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px 30px; /* AINDA mantém largura em telas pequenas */
+  }
+}
+
+.login-card mat-card-header {
+  padding: 0;
+}
+
+
+

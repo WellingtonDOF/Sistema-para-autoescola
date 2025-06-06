@@ -1,0 +1,19 @@
+.mat-mdc-raised-button.custom-button {
+    --mdc-protected-button-container-color: #52a6fa; /* Cor de fundo */
+    --mdc-protected-button-label-text-color: #f7f7f7;
+}
+
+.mat-mdc-button-base{
+    margin: 8px 8px 0px 0px;
+}
+
+mat-error {
+    color: #f44336; /* Cor do erro do Material */
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .input_box {
+    margin-bottom: 15px;
+  }
+

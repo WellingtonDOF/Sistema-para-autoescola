@@ -1,0 +1,126 @@
+<mat-card>
+    <div class="pagamento-box">
+        <button routerLink="/cadastro-pagamento" mat-raised-button class="custom-button">Cadastrar novo Pagamento</button>
+        
+        <div class="filtros-box">
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Procurar:</mat-label>
+                    <input matInput type="text" placeholder="Buscar por aluno, CPF ou forma de pagamento" (input)="search($event)">
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Filtrar por Status</mat-label>
+                    <mat-select [(value)]="statusFiltro" (selectionChange)="filtrarPorStatus()">
+                        <mat-option value="">Todos</mat-option>
+                        <mat-option value="Pendente">Pendente</mat-option>
+                        <mat-option value="Parcial">Parcial</mat-option>
+                        <mat-option value="Pago">Pago</mat-option>
+                        <mat-option value="Cancelado">Cancelado</mat-option>
+                        <mat-option value="Vencido">Vencido</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <button mat-raised-button color="warn" (click)="carregarVencidos()">Ver Vencidos</button>
+        </div>
+    </div>
+
+    <table mat-table [dataSource]="pagamentos" class="mat-elevation-z8">
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let pagamento">
+                @if(pagamento.statusPagamento === "Pago"){
+                    <div>
+                        <img src="images/active.png" alt="pago" style="height: 15px; width: 15px;">
+                    </div>
+                }@else if(pagamento.statusPagamento === "Pendente"){
+                    <div>
+                        <img src="images/pending.png" alt="pendente" style="height: 15px; width: 15px;">
+                    </div>
+                }@else if(pagamento.statusPagamento === "Vencido"){
+                    <div>
+                        <img src="images/inactive.png" alt="vencido" style="height: 15px; width: 15px;">
+                    </div>
+                }@else{
+                    <div>
+                        <img src="images/partial.png" alt="parcial" style="height: 15px; width: 15px;">
+                    </div>
+                }
+            </td>
+        </ng-container>
+
+        <!-- Aluno Column -->
+        <ng-container matColumnDef="Aluno">
+            <th mat-header-cell *matHeaderCellDef>Aluno</th>
+            <td mat-cell *matCellDef="let pagamento">
+                <div>
+                    <strong>{{pagamento.nomeAluno}}</strong><br>
+                    <small>{{pagamento.cpfAluno}}</small>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Valor Column -->
+        <ng-container matColumnDef="Valor">
+            <th mat-header-cell *matHeaderCellDef>Valor</th>
+            <td mat-cell *matCellDef="let pagamento">
+                <div>
+                    <strong>{{pagamento.valorTotalFormatado}}</strong><br>
+                    <small>Pago: {{pagamento.valorPagoFormatado}}</small><br>
+                    <small>Pendente: {{pagamento.valorPendenteFormatado}}</small>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Forma Pagamento Column -->
+        <ng-container matColumnDef="FormaPagamento">
+            <th mat-header-cell *matHeaderCellDef>Forma</th>
+            <td mat-cell *matCellDef="let pagamento">{{pagamento.formaPagamento}}</td>
+        </ng-container>
+
+        <!-- Status Pagamento Column -->
+        <ng-container matColumnDef="StatusPagamento">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let pagamento">
+                <span [class]="'status-badge status-' + getStatusColor(pagamento.statusPagamento)">
+                    {{pagamento.statusPagamento}}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- Parcelas Column -->
+        <ng-container matColumnDef="Parcelas">
+            <th mat-header-cell *matHeaderCellDef>Parcelas</th>
+            <td mat-cell *matCellDef="let pagamento">
+                <div>
+                    <small>Total: {{pagamento.totalParcelas}}</small><br>
+                    <small>Pagas: {{pagamento.parcelasPagas}}</small><br>
+                    <small>Pendentes: {{pagamento.parcelasPendentes}}</small><br>
+                    @if(pagamento.parcelasVencidas > 0){
+                        <small style="color: red;">Vencidas: {{pagamento.parcelasVencidas}}</small>
+                    }
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Ações Column -->
+        <ng-container matColumnDef="Ações">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let pagamento">
+                <button routerLink="/detalhes-pagamento/{{pagamento.id}}" mat-raised-button>Detalhes</button>
+                <button routerLink="/editar-pagamento/{{pagamento.id}}" mat-raised-button class="custom-buttonEdit">Editar</button>
+                @if(pagamento.statusPagamento !== 'Cancelado' && pagamento.statusPagamento !== 'Pago'){
+                    <button mat-raised-button color="warn" (click)="cancelarPagamento(pagamento.id)">Cancelar</button>
+                }
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colums"></tr>
+        <tr mat-row *matRowDef="let row; columns: colums;"></tr>
+    </table>
+</mat-card>

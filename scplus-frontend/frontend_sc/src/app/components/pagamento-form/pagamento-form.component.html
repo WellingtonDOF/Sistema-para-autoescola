@@ -1,0 +1,99 @@
+<mat-card>
+    <div>
+        <h1>{{btnTitulo}}</h1>
+    </div>
+
+    <form [formGroup]="pagamentoForm" (ngSubmit)="submit()">
+        
+        @if(!dadosPagamento) {
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Aluno</mat-label>
+                    <mat-select formControlName="alunoId">
+                        @for(aluno of alunos; track aluno.id) {
+                            <mat-option [value]="aluno.id">{{aluno.nomeCompleto}} - {{aluno.cpf}}</mat-option>
+                        }
+                    </mat-select>
+                    @if(pagamentoForm.get('alunoId')?.invalid && pagamentoForm.get('alunoId')?.touched) {
+                        <mat-error>{{getErrorMessage('Aluno')}}</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+        }
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Valor Total</mat-label>
+                <input matInput type="number" step="0.01" formControlName="valorTotal" placeholder="0,00">
+                @if(pagamentoForm.get('valorTotal')?.invalid && pagamentoForm.get('valorTotal')?.touched) {
+                    <mat-error>{{getErrorMessage('Valor Total')}}</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Forma de Pagamento</mat-label>
+                <mat-select formControlName="formaPagamento">
+                    @for(forma of formasPagamento; track forma) {
+                        <mat-option [value]="forma">{{forma}}</mat-option>
+                    }
+                </mat-select>
+                @if(pagamentoForm.get('formaPagamento')?.invalid && pagamentoForm.get('formaPagamento')?.touched) {
+                    <mat-error>{{getErrorMessage('Forma de Pagamento')}}</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Descrição</mat-label>
+                <textarea matInput formControlName="descricao" placeholder="Observações sobre o pagamento"></textarea>
+            </mat-form-field>
+        </div>
+
+        @if(isParcelado && !dadosPagamento) {
+            <div class="parcelamento-section">
+                <h3>Configurações de Parcelamento</h3>
+                
+                <div class="input_box">
+                    <mat-form-field>
+                        <mat-label>Quantidade de Parcelas</mat-label>
+                        <input matInput type="number" formControlName="quantidadeParcelas" min="2" max="24">
+                        @if(pagamentoForm.get('quantidadeParcelas')?.invalid && pagamentoForm.get('quantidadeParcelas')?.touched) {
+                            <mat-error>{{getErrorMessage('Quantidade de Parcelas')}}</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+
+                <div class="input_box">
+                    <mat-form-field>
+                        <mat-label>Data da Primeira Parcela</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dataPrimeiraParcela">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        @if(pagamentoForm.get('dataPrimeiraParcela')?.invalid && pagamentoForm.get('dataPrimeiraParcela')?.touched) {
+                            <mat-error>{{getErrorMessage('Data da Primeira Parcela')}}</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+
+                <div class="input_box">
+                    <mat-form-field>
+                        <mat-label>Intervalo entre Parcelas (dias)</mat-label>
+                        <input matInput type="number" formControlName="intervaloEntreParcelas" min="1">
+                    </mat-form-field>
+                </div>
+            </div>
+        }
+
+        <div class="btn-box">
+            <button mat-raised-button color="primary" type="submit" [disabled]="pagamentoForm.invalid">
+                {{btnAcao}}
+            </button>
+            <button mat-raised-button type="button" routerLink="/pagamento">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</mat-card>

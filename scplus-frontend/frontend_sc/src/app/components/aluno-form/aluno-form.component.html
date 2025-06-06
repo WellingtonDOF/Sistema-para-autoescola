@@ -1,0 +1,227 @@
+<mat-card appearance="outlined">
+    <h1>{{btnTitulo}}</h1>
+    <form [formGroup]="alunoForm" (ngSubmit)="submit()" #formDit="ngForm" (submit)="$event.preventDefault()">
+
+        @if(dadosAluno === null){
+            <input type="hidden" formControlName="id">
+        }
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Nome Completo:</mat-label>
+                <input matInput type="text" formControlName="nomeCompleto" placeholder="Insira o nome!" required>
+                @if (alunoForm.get('nomeCompleto')?.invalid && alunoForm.get('nomeCompleto')?.touched) {
+                  <mat-error>Nome deve ter entre 3 e 100 caracteres</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        @if (dadosAluno === null) {
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>CPF:</mat-label>
+                    <input matInput type="text" formControlName="cpf" placeholder="Insira o CPF!" 
+                      mask="000.000.000-00" required>
+                    @if (alunoForm.get('cpf')?.hasError('required')) {
+                      <mat-error>CPF é obrigatório</mat-error>
+                    }
+                    @if (alunoForm.get('cpf')?.hasError('invalidCpf')) {
+                      <mat-error>CPF inválido</mat-error>
+                    }
+                    @if (alunoForm.get('cpf')?.hasError('cpfExists')) {
+                      <mat-error>CPF já cadastrado</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+        }
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Endereço:</mat-label>
+                <input matInput type="text" formControlName="endereco" placeholder="Insira o endereço!" required>
+                @if (alunoForm.get('endereco')?.invalid && alunoForm.get('endereco')?.touched) {
+                  <mat-error>Endereço deve ter entre 5 e 200 caracteres</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Telefone:</mat-label>
+                <input matInput type="text" formControlName="telefone" placeholder="Insira o telefone!" 
+                  mask="(00) 00000-0000" [dropSpecialCharacters]="false" required>
+                @if (alunoForm.get('telefone')?.hasError('required')) {
+                  <mat-error>Telefone é obrigatório</mat-error>
+                }
+                @if (alunoForm.get('telefone')?.hasError('pattern')) {
+                  <mat-error>Formato inválido use (00) 00000-0000</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Email:</mat-label>
+                <input matInput type="email" formControlName="email" placeholder="Insira o email!" required>
+                @if (alunoForm.get('email')?.hasError('required')) {
+                  <mat-error>Email é obrigatório</mat-error>
+                }
+                @if (alunoForm.get('email')?.hasError('email')) {
+                  <mat-error>Email inválido</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        @if (dadosAluno === null) {
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Data de Nascimento:</mat-label>
+                    <input matInput type="date" formControlName="dataNascimento" 
+                      placeholder="Insira a data de nascimento!" required>
+                    @if (alunoForm.get('dataNascimento')?.hasError('underAge')) {
+                      <mat-error>O aluno deve ter entre 18 e 120 anos</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+        }
+        @if(tipoCadastro==='instrutor' && dadosAluno === null){
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Data de Admissão</mat-label>
+                    <input matInput type="date" formControlName="dataAdmissao" required>
+                    
+                    @if (alunoForm.get('dataAdmissao')?.hasError('dataAntiga')) {
+                    <mat-error>A empresa foi fundada em 30/08/1988.</mat-error>
+                    }
+                    @if (alunoForm.get('dataAdmissao')?.hasError('dataFutura')) {
+                    <mat-error>A data não pode ser no futuro!</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+        }
+
+        @if(dadosAluno===null){
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Senha:</mat-label>
+                    <input matInput 
+                           [type]="hideSenha ? 'password' : 'text'" 
+                           formControlName="senha" 
+                           placeholder="Insira a senha!" 
+                           [required]="dadosAluno === null">
+                    <button mat-icon-button 
+                            matSuffix 
+                            (click)="toggleSenha($event, 'senha')"
+                            [attr.aria-label]="hideSenha ? 'Mostrar senha' : 'Ocultar senha'">
+                        <mat-icon>{{hideSenha ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    @if (alunoForm.get('senha')?.hasError('minlength')) {
+                        <mat-error>Senha deve ter pelo menos 6 caracteres</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+        }@else{
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Senha:</mat-label>
+                    <input matInput 
+                           [type]="hideSenha ? 'password' : 'text'" 
+                           formControlName="senha" 
+                           placeholder="Insira a senha!">
+                    <button mat-icon-button 
+                           matSuffix 
+                           (click)="toggleSenha($event, 'senha')"
+                           [attr.aria-label]="hideSenha ? 'Mostrar senha' : 'Ocultar senha'">
+                       <mat-icon>{{hideSenha ? 'visibility_off' : 'visibility'}}</mat-icon>
+                   </button>
+                    @if (alunoForm.get('senha')?.hasError('minlength')) {
+                        <mat-error>Senha deve ter pelo menos 6 caracteres</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+        }
+        
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Confirme a Senha:</mat-label>
+                <input matInput
+                        [type]="hideConfirmarSenha ? 'password' : 'text'"
+                        formControlName="confirmaSenha"
+                        placeholder="Confirme a senha!">
+                        <button mat-icon-button 
+                                matSuffix 
+                                (click)="toggleSenha($event, 'confirmar')"
+                                [attr.aria-label]="hideConfirmarSenha ? 'Mostrar senha' : 'Ocultar senha'">
+                            <mat-icon>{{hideConfirmarSenha ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                @if (alunoForm.hasError('senhasDiferentes') && alunoForm.get('confirmaSenha')?.touched) {
+                <mat-error>As senhas não coincidem.</mat-error>
+                }
+                @if (alunoForm.get('confirmaSenha')?.hasError('minlength')) {
+                    <mat-error>Senha deve ter pelo menos 6 caracteres</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        @if(tipoCadastro==='instrutor' && dadosAluno === null){
+        
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Categoria CNH: </mat-label>
+                    <mat-select id="categoriaCnh" formControlName="categoriaCnh" required>
+                        <mat-option value="A">A</mat-option>
+                        <mat-option value="B">B</mat-option>
+                        <mat-option value="AB">AB</mat-option>
+                    </mat-select>           
+            </mat-form-field>
+        </div>       
+        }
+
+        @if(tipoCadastro==='aluno'){
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Observação:</mat-label>
+                <textarea matInput type="text" formControlName="observacao" rows="1" cols="25" placeholder="Insira a observação sobre o aluno!" maxlength="500"></textarea>
+                @if (alunoForm.get('observacao')?.invalid && alunoForm.get('observacao')?.touched) {
+                  <mat-error>Descrição deve ter entre 5 e 150 caracteres</mat-error>
+                }
+            </mat-form-field>
+        </div>
+        }
+
+        @if (dadosAluno === null) {
+            @if(tipoCadastro==='instrutor'){
+                <div class="input_box">
+                    <mat-form-field>
+                        <mat-label>Tipo usuário:</mat-label>
+                        <mat-select id="tipoUsuario" formControlName="tipoUsuario" required>
+                            <mat-option value="Instrutor">Instrutor</mat-option>
+                            <mat-option value="Admin">Admin</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            }
+            <!--
+            @else {
+                <div class="input_box">
+                    <mat-form-field>
+                        <mat-label>Tipo usuário:</mat-label>
+                        <mat-select id="tipoUsuario" formControlName="tipoUsuario" required>
+                            <mat-option value="Aluno">Aluno</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            }-->
+        }
+    
+        <div class="btn-box">
+            <button type="submit" [disabled]="!alunoForm.valid" mat-raised-button class="custom-button">{{btnAcao}}</button>
+
+            @if(tipoCadastro === 'instrutor'){
+                <button routerLink="/instrutor" mat-raised-button>Voltar</button>
+            } @else {
+                <button routerLink="/aluno" mat-raised-button>Voltar</button>
+            }
+        </div>        
+    </form>
+</mat-card>

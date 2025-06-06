@@ -1,0 +1,152 @@
+.detalhes-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.secao-principal h3,
+.secao-status h3 {
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.input_box {
+  margin-bottom: 20px;
+}
+
+.input_box mat-form-field {
+  width: 100%;
+}
+
+.status-card,
+.valores-card {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.valores-card h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.status-item,
+.valor-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.status-item:last-child,
+.valor-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.status-item .label,
+.valor-item .label {
+  font-weight: 500;
+  color: #666;
+}
+
+.valor-item .valor {
+  font-weight: bold;
+}
+
+.valor-item.total {
+  border-top: 2px solid #333;
+  margin-top: 10px;
+  padding-top: 15px;
+}
+
+.valor-item.total .valor {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.valor-item.pago .valor {
+  color: #4caf50;
+}
+
+.valor.juros {
+  color: #ff9800;
+}
+
+.valor.multa {
+  color: #f44336;
+}
+
+.valor.vencido {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.valor.atraso {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-warning {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-secondary {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+.btn-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.custom-buttonEdit {
+  background-color: #2196f3;
+  color: white;
+}
+
+button {
+  margin-right: 10px;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+@media (max-width: 768px) {
+  .detalhes-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,191 @@
+<mat-card>
+    <div>
+        <h1>{{btnTitulo}}</h1>
+    </div>
+
+    <div>
+        @if(parcelaDetalhes){
+        <form (submit)="$event.preventDefault()">
+            <div class="detalhes-grid">
+                <div class="secao-principal">
+                    <h3>Informações da Parcela</h3>
+                    
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Número da Parcela:</mat-label>
+                            <input matInput type="text" value="{{parcelaDetalhes.numeroParcela}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>ID do Pagamento:</mat-label>
+                            <input matInput type="text" value="{{parcelaDetalhes.pagamentoId}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Valor Base:</mat-label>
+                            <input matInput type="text" value="{{parcelaDetalhes.valorFormatado}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Juros:</mat-label>
+                            <input matInput type="text" value="{{parcelaDetalhes.jurosFormatado}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Multa:</mat-label>
+                            <input matInput type="text" value="{{parcelaDetalhes.multaFormatada}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Valor Total:</mat-label>
+                            <input matInput type="text" value="{{parcelaDetalhes.valorTotalFormatado}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Status:</mat-label>
+                            <input matInput type="text" value="{{parcelaDetalhes.statusParcela}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Data de Vencimento:</mat-label>
+                            <input matInput type="text" value="{{parcelaDetalhes.dataVencimento}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    @if(parcelaDetalhes.dataPagamento) {
+                        <div class="input_box">
+                            <mat-form-field>
+                                <mat-label>Data de Pagamento:</mat-label>
+                                <input matInput type="text" value="{{parcelaDetalhes.dataPagamento}}" disabled>
+                            </mat-form-field>
+                        </div>
+                    }
+
+                    @if(parcelaDetalhes.valorPagoFormatado) {
+                        <div class="input_box">
+                            <mat-form-field>
+                                <mat-label>Valor Pago:</mat-label>
+                                <input matInput type="text" value="{{parcelaDetalhes.valorPagoFormatado}}" disabled>
+                            </mat-form-field>
+                        </div>
+                    }
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Data de Criação:</mat-label>
+                            <input matInput type="text" value="{{parcelaDetalhes.dataCriacao}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    @if(parcelaDetalhes.dataAtualizacao) {
+                        <div class="input_box">
+                            <mat-form-field>
+                                <mat-label>Última Atualização:</mat-label>
+                                <input matInput type="text" value="{{parcelaDetalhes.dataAtualizacao}}" disabled>
+                            </mat-form-field>
+                        </div>
+                    }
+
+                    @if(parcelaDetalhes.observacao) {
+                        <div class="input_box">
+                            <mat-form-field>
+                                <mat-label>Observação:</mat-label>
+                                <textarea matInput disabled>{{parcelaDetalhes.observacao}}</textarea>
+                            </mat-form-field>
+                        </div>
+                    }
+                </div>
+
+                <div class="secao-status">
+                    <h3>Status da Parcela</h3>
+                    
+                    <div class="status-card">
+                        <div class="status-item">
+                            <span class="label">Status Atual:</span>
+                            <span [class]="'status-badge status-' + getStatusColor(parcelaDetalhes.statusParcela)">
+                                {{parcelaDetalhes.statusParcela}}
+                            </span>
+                        </div>
+                        
+                        @if(parcelaDetalhes.estaVencida) {
+                            <div class="status-item">
+                                <span class="label">Situação:</span>
+                                <span class="valor vencido">VENCIDA</span>
+                            </div>
+                        }
+                        
+                        @if(parcelaDetalhes.diasAtraso > 0) {
+                            <div class="status-item">
+                                <span class="label">Dias de Atraso:</span>
+                                <span class="valor atraso">{{parcelaDetalhes.diasAtraso}} dias</span>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="valores-card">
+                        <h4>Resumo de Valores</h4>
+                        
+                        <div class="valor-item">
+                            <span class="label">Valor Base:</span>
+                            <span class="valor">{{parcelaDetalhes.valorFormatado}}</span>
+                        </div>
+                        
+                        @if(parcelaDetalhes.juros > 0) {
+                            <div class="valor-item">
+                                <span class="label">Juros:</span>
+                                <span class="valor juros">{{parcelaDetalhes.jurosFormatado}}</span>
+                            </div>
+                        }
+                        
+                        @if(parcelaDetalhes.multa > 0) {
+                            <div class="valor-item">
+                                <span class="label">Multa:</span>
+                                <span class="valor multa">{{parcelaDetalhes.multaFormatada}}</span>
+                            </div>
+                        }
+                        
+                        <div class="valor-item total">
+                            <span class="label">Total a Pagar:</span>
+                            <span class="valor">{{parcelaDetalhes.valorTotalFormatado}}</span>
+                        </div>
+                        
+                        @if(parcelaDetalhes.valorPagoFormatado) {
+                            <div class="valor-item pago">
+                                <span class="label">Valor Pago:</span>
+                                <span class="valor">{{parcelaDetalhes.valorPagoFormatado}}</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-box">
+                @if(parcelaDetalhes.statusParcela === 'Pendente') {
+                    <button (click)="marcarComoPaga()" mat-raised-button color="primary">{{btnAcao}}</button>
+                }
+                
+                @if(parcelaDetalhes.statusParcela !== 'Paga' && parcelaDetalhes.statusParcela !== 'Cancelada') {
+                    <button routerLink="/editar-parcela/{{parcelaDetalhes.id}}" mat-raised-button class="custom-buttonEdit">Editar</button>
+                }
+                
+                <button routerLink="/detalhes-pagamento/{{parcelaDetalhes.pagamentoId}}" mat-raised-button>Ver Pagamento</button>
+                <button mat-raised-button routerLink="/parcela">Voltar</button>
+            </div>
+        </form>
+        }
+    </div>
+</mat-card>

@@ -1,0 +1,155 @@
+<mat-card>
+    <div class="parcela-box">
+        <h2>Gerenciamento de Parcelas</h2>
+        
+        <div class="filtros-box">
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Procurar:</mat-label>
+                    <input matInput type="text" placeholder="Buscar por número da parcela ou ID do pagamento" (input)="search($event)">
+                </mat-form-field>
+            </div>
+
+            <div class="acoes-rapidas">
+                <button mat-raised-button color="warn" (click)="carregarVencidas()">Ver Vencidas</button>
+                
+                <div class="vencendo-grupo">
+                    <mat-form-field class="dias-input">
+                        <mat-label>Dias</mat-label>
+                        <input matInput type="number" [(ngModel)]="diasVencimento" min="1" max="365">
+                    </mat-form-field>
+                    <button mat-raised-button color="accent" (click)="carregarVencendoEm()">Ver Vencendo</button>
+                </div>
+                
+                <button mat-raised-button (click)="carregarParcelas()">Ver Todas</button>
+            </div>
+        </div>
+    </div>
+
+    <table mat-table [dataSource]="parcelas" class="mat-elevation-z8">
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let parcela">
+                @if(parcela.statusParcela === "Paga"){
+                    <div>
+                        <img src="images/active.png" alt="paga" style="height: 15px; width: 15px;">
+                    </div>
+                }@else if(parcela.statusParcela === "Pendente"){
+                    <div>
+                        <img src="images/pending.png" alt="pendente" style="height: 15px; width: 15px;">
+                    </div>
+                }@else if(parcela.estaVencida){
+                    <div>
+                        <img src="images/inactive.png" alt="vencida" style="height: 15px; width: 15px;">
+                    </div>
+                }@else{
+                    <div>
+                        <img src="images/cancelled.png" alt="cancelada" style="height: 15px; width: 15px;">
+                    </div>
+                }
+            </td>
+        </ng-container>
+
+        <!-- Número Column -->
+        <ng-container matColumnDef="Numero">
+            <th mat-header-cell *matHeaderCellDef>Parcela</th>
+            <td mat-cell *matCellDef="let parcela">
+                <div>
+                    <strong>{{parcela.numeroParcela}}</strong><br>
+                    <small>Pagamento #{{parcela.pagamentoId}}</small>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Valor Column -->
+        <ng-container matColumnDef="Valor">
+            <th mat-header-cell *matHeaderCellDef>Valor</th>
+            <td mat-cell *matCellDef="let parcela">
+                <div>
+                    <strong>{{parcela.valorTotalFormatado}}</strong><br>
+                    @if(parcela.juros > 0 || parcela.multa > 0) {
+                        <small>Base: {{parcela.valorFormatado}}</small><br>
+                        @if(parcela.juros > 0) {
+                            <small>Juros: {{parcela.jurosFormatado}}</small><br>
+                        }
+                        @if(parcela.multa > 0) {
+                            <small>Multa: {{parcela.multaFormatada}}</small>
+                        }
+                    }
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Vencimento Column -->
+        <ng-container matColumnDef="Vencimento">
+            <th mat-header-cell *matHeaderCellDef>Vencimento</th>
+            <td mat-cell *matCellDef="let parcela">
+                <div [class.vencida]="parcela.estaVencida">
+                    {{parcela.dataVencimento}}
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Status Parcela Column -->
+        <ng-container matColumnDef="StatusParcela">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let parcela">
+                <span [class]="'status-badge status-' + getStatusColor(parcela.statusParcela)">
+                    {{parcela.statusParcela}}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- Atraso Column -->
+        <ng-container matColumnDef="Atraso">
+            <th mat-header-cell *matHeaderCellDef>Atraso</th>
+            <td mat-cell *matCellDef="let parcela">
+                @if(parcela.diasAtraso > 0) {
+                    <span class="atraso">{{parcela.diasAtraso}} dias</span>
+                } @else {
+                    <span class="text-muted">-</span>
+                }
+            </td>
+        </ng-container>
+
+        <!-- Pagamento Column -->
+        <ng-container matColumnDef="Pagamento">
+            <th mat-header-cell *matHeaderCellDef>Pagamento</th>
+            <td mat-cell *matCellDef="let parcela">
+                @if(parcela.dataPagamento) {
+                    <div>
+                        {{parcela.dataPagamento}}<br>
+                        @if(parcela.valorPagoFormatado) {
+                            <small>{{parcela.valorPagoFormatado}}</small>
+                        }
+                    </div>
+                } @else {
+                    <span class="text-muted">Não pago</span>
+                }
+            </td>
+        </ng-container>
+
+        <!-- Ações Column -->
+        <ng-container matColumnDef="Ações">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let parcela">
+                <div class="acoes-coluna">
+                    @if(parcela.statusParcela === 'Pendente') {
+                        <button mat-raised-button color="primary" (click)="marcarComoPaga(parcela.id)">
+                            Pagar
+                        </button>
+                    }
+                    <button routerLink="/detalhes-parcela/{{parcela.id}}" mat-raised-button>Detalhes</button>
+                    @if(parcela.statusParcela !== 'Paga') {
+                        <button routerLink="/editar-parcela/{{parcela.id}}" mat-raised-button class="custom-buttonEdit">Editar</button>
+                    }
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="colums"></tr>
+        <tr mat-row *matRowDef="let row; columns: colums;"></tr>
+    </table>
+</mat-card>

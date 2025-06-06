@@ -1,0 +1,216 @@
+<mat-card>
+    <div>
+        <h1>{{btnTitulo}}</h1>
+    </div>
+
+    <div>
+        @if(pagamentoDetalhes){
+        <form (submit)="$event.preventDefault()">
+            <div class="detalhes-grid">
+                <div class="secao-principal">
+                    <h3>Informações do Pagamento</h3>
+                    
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Aluno:</mat-label>
+                            <input matInput type="text" value="{{pagamentoDetalhes.nomeAluno}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>CPF:</mat-label>
+                            <input matInput type="text" value="{{pagamentoDetalhes.cpfAluno}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Valor Total:</mat-label>
+                            <input matInput type="text" value="{{pagamentoDetalhes.valorTotalFormatado}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Forma de Pagamento:</mat-label>
+                            <input matInput type="text" value="{{pagamentoDetalhes.formaPagamento}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Status:</mat-label>
+                            <input matInput type="text" value="{{pagamentoDetalhes.statusPagamento}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Data do Pagamento:</mat-label>
+                            <input matInput type="text" value="{{pagamentoDetalhes.dataPagamento}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="input_box">
+                        <mat-form-field>
+                            <mat-label>Data de Criação:</mat-label>
+                            <input matInput type="text" value="{{pagamentoDetalhes.dataCriacao}}" disabled>
+                        </mat-form-field>
+                    </div>
+
+                    @if(pagamentoDetalhes.dataAtualizacao) {
+                        <div class="input_box">
+                            <mat-form-field>
+                                <mat-label>Última Atualização:</mat-label>
+                                <input matInput type="text" value="{{pagamentoDetalhes.dataAtualizacao}}" disabled>
+                            </mat-form-field>
+                        </div>
+                    }
+
+                    @if(pagamentoDetalhes.descricao) {
+                        <div class="input_box">
+                            <mat-form-field>
+                                <mat-label>Descrição:</mat-label>
+                                <textarea matInput disabled>{{pagamentoDetalhes.descricao}}</textarea>
+                            </mat-form-field>
+                        </div>
+                    }
+                </div>
+
+                <div class="secao-resumo">
+                    <h3>Resumo Financeiro</h3>
+                    
+                    <div class="resumo-card">
+                        <div class="resumo-item">
+                            <span class="label">Valor Total:</span>
+                            <span class="valor total">{{pagamentoDetalhes.valorTotalFormatado}}</span>
+                        </div>
+                        
+                        <div class="resumo-item">
+                            <span class="label">Valor Pago:</span>
+                            <span class="valor pago">{{pagamentoDetalhes.valorPagoFormatado}}</span>
+                        </div>
+                        
+                        <div class="resumo-item">
+                            <span class="label">Valor Pendente:</span>
+                            <span class="valor pendente">{{pagamentoDetalhes.valorPendenteFormatado}}</span>
+                        </div>
+                    </div>
+
+                    <div class="resumo-card">
+                        <div class="resumo-item">
+                            <span class="label">Total de Parcelas:</span>
+                            <span class="valor">{{pagamentoDetalhes.totalParcelas}}</span>
+                        </div>
+                        
+                        <div class="resumo-item">
+                            <span class="label">Parcelas Pagas:</span>
+                            <span class="valor pago">{{pagamentoDetalhes.parcelasPagas}}</span>
+                        </div>
+                        
+                        <div class="resumo-item">
+                            <span class="label">Parcelas Pendentes:</span>
+                            <span class="valor pendente">{{pagamentoDetalhes.parcelasPendentes}}</span>
+                        </div>
+                        
+                        @if(pagamentoDetalhes.parcelasVencidas > 0) {
+                            <div class="resumo-item">
+                                <span class="label">Parcelas Vencidas:</span>
+                                <span class="valor vencido">{{pagamentoDetalhes.parcelasVencidas}}</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            @if(pagamentoDetalhes.parcelas && pagamentoDetalhes.parcelas.length > 0) {
+                <div class="secao-parcelas">
+                    <h3>Parcelas</h3>
+                    
+                    <table mat-table [dataSource]="pagamentoDetalhes.parcelas" class="mat-elevation-z4">
+                        
+                        <!-- Número Column -->
+                        <ng-container matColumnDef="Numero">
+                            <th mat-header-cell *matHeaderCellDef>Nº</th>
+                            <td mat-cell *matCellDef="let parcela">{{parcela.numeroParcela}}</td>
+                        </ng-container>
+
+                        <!-- Valor Column -->
+                        <ng-container matColumnDef="Valor">
+                            <th mat-header-cell *matHeaderCellDef>Valor</th>
+                            <td mat-cell *matCellDef="let parcela">{{parcela.valorTotalFormatado}}</td>
+                        </ng-container>
+
+                        <!-- Status Column -->
+                        <ng-container matColumnDef="Status">
+                            <th mat-header-cell *matHeaderCellDef>Status</th>
+                            <td mat-cell *matCellDef="let parcela">
+                                <span [class]="'status-badge status-' + getStatusColor(parcela.statusParcela)">
+                                    {{parcela.statusParcela}}
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <!-- Vencimento Column -->
+                        <ng-container matColumnDef="Vencimento">
+                            <th mat-header-cell *matHeaderCellDef>Vencimento</th>
+                            <td mat-cell *matCellDef="let parcela">{{parcela.dataVencimento}}</td>
+                        </ng-container>
+
+                        <!-- Pagamento Column -->
+                        <ng-container matColumnDef="Pagamento">
+                            <th mat-header-cell *matHeaderCellDef>Pagamento</th>
+                            <td mat-cell *matCellDef="let parcela">
+                                @if(parcela.dataPagamento) {
+                                    {{parcela.dataPagamento}}
+                                } @else {
+                                    <span class="text-muted">-</span>
+                                }
+                            </td>
+                        </ng-container>
+
+                        <!-- Atraso Column -->
+                        <ng-container matColumnDef="Atraso">
+                            <th mat-header-cell *matHeaderCellDef>Atraso</th>
+                            <td mat-cell *matCellDef="let parcela">
+                                @if(parcela.diasAtraso > 0) {
+                                    <span class="atraso">{{parcela.diasAtraso}} dias</span>
+                                } @else {
+                                    <span class="text-muted">-</span>
+                                }
+                            </td>
+                        </ng-container>
+
+                        <!-- Ações Column -->
+                        <ng-container matColumnDef="Ações">
+                            <th mat-header-cell *matHeaderCellDef></th>
+                            <td mat-cell *matCellDef="let parcela">
+                                @if(parcela.statusParcela === 'Pendente') {
+                                    <button mat-raised-button color="primary" (click)="marcarParcelaComoPaga(parcela.id)">
+                                        Marcar como Paga
+                                    </button>
+                                }
+                                <button routerLink="/detalhes-parcela/{{parcela.id}}" mat-raised-button>
+                                    Detalhes
+                                </button>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="colunsParcelas"></tr>
+                        <tr mat-row *matRowDef="let row; columns: colunsParcelas;"></tr>
+                    </table>
+                </div>
+            }
+
+            <div class="btn-box">
+                @if(pagamentoDetalhes.statusPagamento !== 'Cancelado' && pagamentoDetalhes.statusPagamento !== 'Pago') {
+                    <button (click)="cancelarPagamento()" mat-raised-button color="warn">{{btnAcao}}</button>
+                }
+                
+                <button mat-raised-button routerLink="/pagamento">Voltar</button>
+            </div>
+        </form>
+        }
+    </div>
+</mat-card>

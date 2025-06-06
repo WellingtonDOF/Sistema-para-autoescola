@@ -1,0 +1,100 @@
+<mat-card appearance="outlined">
+    <h1>{{btnTitulo}}</h1>
+    <form [formGroup]="veiculoForm" (ngSubmit)="submit()" #formDit="ngForm" (submit)="$event.preventDefault()">
+
+        @if(dadosVeiculo === null){
+            <input type="hidden" formControlName="id">
+        }
+        
+        @if (dadosVeiculo === null){
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Placa:</mat-label>
+                    <input matInput type="text" formControlName="placa" placeholder="Insira a Placa!" required>
+                    @if (veiculoForm.get('placa')?.hasError('required')) {
+                      <mat-error>Placa é obrigatória</mat-error>
+                    }
+                    @if (veiculoForm.get('placa')?.hasError('placaInvalida')) {
+                      <mat-error>Formato inválido (use AAA1234 ou ABC1D23)</mat-error>
+                    }
+                    @if (veiculoForm.get('placa')?.hasError('placaExistente')) {
+                      <mat-error>Esta placa já está cadastrada</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+        }
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Modelo:</mat-label>
+                <input matInput type="text" formControlName="modelo" placeholder="Insira o modelo!" required>
+                @if (veiculoForm.get('modelo')?.invalid && veiculoForm.get('modelo')?.touched) {
+                <mat-error>Modelo deve ter entre 5 e 200 caracteres</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Marca:</mat-label>
+                <input matInput type="text" formControlName="marca" placeholder="Insira a marca!" required>
+                @if (veiculoForm.get('marca')?.invalid && veiculoForm.get('marca')?.touched) {
+                  <mat-error>Marca deve ter entre 5 e 200 caracteres</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+              <mat-label>Data de Fabricação:</mat-label>
+              <input matInput type="date" formControlName="dataFabricacao" 
+                  placeholder="Insira a data de fabricação!" required>
+              @if (veiculoForm.get('dataFabricacao')?.hasError('required')) {
+                <mat-error>Data de fabricação é obrigatória</mat-error>
+              }
+              @if (veiculoForm.get('dataFabricacao')?.hasError('invalidDate')) {
+                <mat-error>Data inválida</mat-error>
+              }
+              @if (veiculoForm.get('dataFabricacao')?.hasError('minYear')) {
+                <mat-error>O ano deve ser 1950 ou posterior</mat-error>
+              }
+              @if (veiculoForm.get('dataFabricacao')?.hasError('maxYear')) {
+                <mat-error>O ano não pode ser maior que a data atual</mat-error>
+              }
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+              <mat-label>Data de Aquisição:</mat-label>
+              <input matInput type="date" formControlName="dataAquisicao" 
+                  placeholder="Insira a data de aquisição!" required>
+              
+              @if (veiculoForm.get('dataAquisicao')?.hasError('required')) {
+                <mat-error>Data de aquisição é obrigatória</mat-error>
+              }
+              @if (veiculoForm.get('dataAquisicao')?.hasError('acquisitionBeforeManufacture')) {
+                <mat-error>Data de aquisição não pode ser anterior à fabricação</mat-error>
+              }
+            </mat-form-field>
+        </div>
+
+        @if(dadosVeiculo===null){
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Categoria do Veículo: </mat-label>
+                        <mat-select id="categoria" formControlName="categoria" required>
+                            <mat-option value="Moto">Moto</mat-option>
+                            <mat-option value="Carro">Carro</mat-option>
+                        </mat-select>           
+                </mat-form-field>
+            </div>       
+        }
+
+    
+        <div class="btn-box">
+            <button type="submit" [disabled]="!veiculoForm.valid" mat-raised-button class="custom-button">{{btnAcao}}</button>
+            <button routerLink="/veiculo" mat-raised-button>Voltar</button>
+        </div>        
+    </form>
+</mat-card>

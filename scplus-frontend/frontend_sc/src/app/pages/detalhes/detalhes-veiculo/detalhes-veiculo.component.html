@@ -1,0 +1,66 @@
+
+<mat-card>
+    <div>
+        <h1>{{btnTitulo}}</h1>
+    </div>
+
+    <div>
+        @if(veiculoDetalhes){
+        <form (submit)="$event.preventDefault()">
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Placa: </mat-label>
+                    <input matInput type="text" value="{{veiculoDetalhes.placa}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Modelo do Veículo: </mat-label>
+                    <input matInput type="text" value="{{veiculoDetalhes.modelo}}" disabled>
+                </mat-form-field>
+            </div>
+            
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Marca do Veículo: </mat-label>
+                    <input matInput type="text" value="{{veiculoDetalhes.marca}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Categoria do Veículo: </mat-label>
+                    <input matInput type="text" value="{{veiculoDetalhes.categoria}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Data de Fabricação: </mat-label>
+                    <input matInput type="text" value="{{veiculoDetalhes.dataFabricacao}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Data de Aquisição: </mat-label>
+                    <input matInput type="text" value="{{veiculoDetalhes.dataAquisicao}}" disabled>
+                </mat-form-field>
+            </div>
+            
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Situação Veículo: </mat-label>
+                    <input matInput type="text" value="{{veiculoDetalhes.statusVeiculo}}" disabled>
+                </mat-form-field>
+            </div>
+
+            <div class="btn-box">
+                <button (click)="InativaVeiculo()" mat-raised-button color="warn">{{btnAcao}}</button>
+                <button mat-raised-button routerLink="/veiculo">Voltar</button>
+            </div>
+        </form>
+        }
+    </div>
+</mat-card>

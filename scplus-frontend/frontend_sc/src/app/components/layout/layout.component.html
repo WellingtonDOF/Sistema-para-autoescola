@@ -1,0 +1,299 @@
+<div class="app-container">
+
+  <!-- Header e Sidebar - só aparecem se showHeaderFooter for true -->
+  @if (showHeaderFooter) {
+    <div class="sidenav-container">
+      <mat-sidenav-container class="sidenav-container">
+        <!-- Sidebar -->
+        <mat-sidenav #drawer class="sidenav" fixedInViewport mode="side" opened>
+          <!-- Header do Sidebar -->
+          <div class="sidenav-header">
+            <div class="logo-container">
+              <mat-icon class="logo-icon">school</mat-icon>
+              <h2 class="logo-text">AutoEscola</h2>
+            </div>
+          </div>
+
+          <!-- Navegação -->
+          <mat-nav-list class="nav-list">
+            <!-- Dashboard -->
+            <div class="nav-item-container">
+              <mat-list-item class="nav-item" routerLink="/dashboard" routerLinkActive="active">
+                <mat-icon matListItemIcon>dashboard</mat-icon>
+                <span matListItemTitle>Dashboard</span>
+              </mat-list-item>
+            </div>
+
+            @if(isAdmin) {
+                <!-- Instrutores -->
+                <div class="nav-item-container">
+                <mat-list-item class="nav-item expandable" (click)="toggleSubmenu('instrutor')">
+                    <mat-icon matListItemIcon>person</mat-icon>
+                    <span matListItemTitle>Instrutores</span>
+                    <mat-icon class="expand-icon" [class.expanded]="submenuStates['instrutor']">expand_more</mat-icon>
+                </mat-list-item>
+                <div class="submenu" [class.expanded]="submenuStates['instrutor']">
+                    <mat-list-item class="nav-subitem" routerLink="/instrutor" routerLinkActive="active">
+                    <span matListItemTitle>Listar</span>
+                    </mat-list-item>
+                    <mat-list-item class="nav-subitem" routerLink="/cadastro" [queryParams]="{tipo: 'instrutor'}" routerLinkActive="active">
+                    <span matListItemTitle>Cadastrar</span>
+                    </mat-list-item>
+                </div>
+                </div>
+            }
+            @if(isAdmin || isInstrutor) {
+            <!-- Alunos -->
+                <div class="nav-item-container">
+                <mat-list-item class="nav-item expandable" (click)="toggleSubmenu('aluno')">
+                    <mat-icon matListItemIcon>school</mat-icon>
+                    <span matListItemTitle>Alunos</span>
+                    <mat-icon class="expand-icon" [class.expanded]="submenuStates['aluno']">expand_more</mat-icon>
+                </mat-list-item>
+                <div class="submenu" [class.expanded]="submenuStates['aluno']">
+                    <mat-list-item class="nav-subitem" routerLink="/aluno" routerLinkActive="active">
+                    <span matListItemTitle>Listar</span>
+                    </mat-list-item>
+                    <mat-list-item class="nav-subitem" routerLink="/cadastro" [queryParams]="{tipo: 'aluno'}" routerLinkActive="active">
+                    <span matListItemTitle>Cadastrar</span>
+                    </mat-list-item>
+                </div>
+                </div>
+            }
+
+            @if(isAdmin) {
+            <!-- Aulas -->
+                <div class="nav-item-container">
+                <mat-list-item class="nav-item expandable" (click)="toggleSubmenu('aula')">
+                    <mat-icon matListItemIcon>event</mat-icon>
+                    <span matListItemTitle>Aulas</span>
+                    <mat-icon class="expand-icon" [class.expanded]="submenuStates['aula']">expand_more</mat-icon>
+                </mat-list-item>
+                <div class="submenu" [class.expanded]="submenuStates['aula']">
+                    <mat-list-item class="nav-subitem" routerLink="/aula" routerLinkActive="active">
+                    <span matListItemTitle>Listar</span>
+                    </mat-list-item>
+                    <mat-list-item class="nav-subitem" routerLink="/aula" routerLinkActive="active">
+                    <span matListItemTitle>Agendar</span>
+                    </mat-list-item>
+                </div>
+                </div>
+            }
+
+            @if(isAdmin) {
+            <!-- Veículos -->
+                <div class="nav-item-container">
+                <mat-list-item class="nav-item expandable" (click)="toggleSubmenu('veiculo')">
+                    <mat-icon matListItemIcon>directions_car</mat-icon>
+                    <span matListItemTitle>Veículos</span>
+                    <mat-icon class="expand-icon" [class.expanded]="submenuStates['veiculo']">expand_more</mat-icon>
+                </mat-list-item>
+                <div class="submenu" [class.expanded]="submenuStates['veiculo']">
+                    <mat-list-item class="nav-subitem" routerLink="/veiculo" routerLinkActive="active">
+                    <span matListItemTitle>Listar</span>
+                    </mat-list-item>
+                    <mat-list-item class="nav-subitem" routerLink="/cadastro-veiculo" routerLinkActive="active">
+                    <span matListItemTitle>Cadastrar</span>
+                    </mat-list-item>
+                </div>
+                </div>
+            }
+
+            <!-- Matrículas -->
+             @if(isAdmin){
+                <div class="nav-item-container">
+                <mat-list-item class="nav-item expandable" (click)="toggleSubmenu('matricula')">
+                    <mat-icon matListItemIcon>assignment</mat-icon>
+                    <span matListItemTitle>Matrículas</span>
+                    <mat-icon class="expand-icon" [class.expanded]="submenuStates['matricula']">expand_more</mat-icon>
+                </mat-list-item>
+                <div class="submenu" [class.expanded]="submenuStates['matricula']">
+                    <mat-list-item class="nav-subitem" routerLink="/matricula" routerLinkActive="active">
+                    <span matListItemTitle>Listar</span>
+                    </mat-list-item>
+                    <mat-list-item class="nav-subitem" routerLink="/cadastro-matricula" routerLinkActive="active">
+                    <span matListItemTitle>Nova Matrícula</span>
+                    </mat-list-item>
+                </div>
+                </div>
+             }
+
+            @if(isAdmin) {
+            <!-- Pagamentos -->
+                <div class="nav-item-container">
+                <mat-list-item class="nav-item expandable" (click)="toggleSubmenu('pagamento')">
+                    <mat-icon matListItemIcon>payment</mat-icon>
+                    <span matListItemTitle>Pagamentos</span>
+                    <mat-icon class="expand-icon" [class.expanded]="submenuStates['pagamento']">expand_more</mat-icon>
+                </mat-list-item>
+                <div class="submenu" [class.expanded]="submenuStates['pagamento']">
+                    <mat-list-item class="nav-subitem" routerLink="/pagamento" routerLinkActive="active">
+                    <span matListItemTitle>Listar</span>
+                    </mat-list-item>
+                    <mat-list-item class="nav-subitem" routerLink="/cadastro-pagamento" routerLinkActive="active">
+                    <span matListItemTitle>Novo Pagamento</span>
+                    </mat-list-item>
+                </div>
+                </div>
+            }
+
+            @if(isAdmin) {
+            <!-- Parcelas -->
+                <div class="nav-item-container">
+                <mat-list-item class="nav-item expandable" (click)="toggleSubmenu('parcela')">
+                    <mat-icon matListItemIcon>receipt</mat-icon>
+                    <span matListItemTitle>Parcelas</span>
+                    <mat-icon class="expand-icon" [class.expanded]="submenuStates['parcela']">expand_more</mat-icon>
+                </mat-list-item>
+                <div class="submenu" [class.expanded]="submenuStates['parcela']">
+                    <mat-list-item class="nav-subitem" routerLink="/parcela" routerLinkActive="active">
+                    <span matListItemTitle>Listar</span>
+                    </mat-list-item>
+                    <mat-list-item class="nav-subitem" routerLink="/parcela" [queryParams]="{filter: 'vencidas'}" routerLinkActive="active">
+                    <span matListItemTitle>Vencidas</span>
+                    </mat-list-item>
+                    <mat-list-item class="nav-subitem" routerLink="/parcela" [queryParams]="{filter: 'vencendo'}" routerLinkActive="active">
+                    <span matListItemTitle>Vencendo</span>
+                    </mat-list-item>
+                </div>
+                </div>
+            }
+
+            <!-- Seção do usuário -->
+            <div class="user-section">
+                @if (currentUser) {
+                <div class="user-info">
+                    <span style="padding-left: 30px">{{ currentUser.nomeCompleto}}</span>
+                </div>
+                }
+                <!--
+              <mat-list-item class="user-item" routerLink="/profile">
+                <mat-icon matListItemIcon>account_circle</mat-icon>
+                <span matListItemTitle>Perfil</span>
+              </mat-list-item>-->
+              <mat-list-item class="user-item" (click)="logout()">
+                <mat-icon matListItemIcon>logout</mat-icon>
+                <span matListItemTitle>Sair</span>
+              </mat-list-item>
+            </div>
+          </mat-nav-list>
+        </mat-sidenav>
+
+        <!-- Conteúdo principal -->
+        <mat-sidenav-content class="main-content">
+          <!-- Top Toolbar -->
+          <mat-toolbar class="top-toolbar">
+            <button mat-icon-button class="menu-button" (click)="drawer.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <span>Sistema de Autoescola</span>
+            <span class="toolbar-spacer"></span>
+            <div class="toolbar-actions">
+              <button mat-icon-button>
+                <mat-icon>notifications</mat-icon>
+              </button>
+              <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                <mat-icon>account_circle</mat-icon>
+              </button>
+              <mat-menu #userMenu="matMenu">
+                <button mat-menu-item routerLink="/profile">
+                  <mat-icon>person</mat-icon>
+                  <span>Perfil</span>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                  <mat-icon>logout</mat-icon>
+                  <span>Sair</span>
+                </button>
+              </mat-menu>
+            </div>
+          </mat-toolbar>
+
+          <!-- Área de conteúdo -->
+          <div class="page-content">
+            <router-outlet></router-outlet>
+          </div>
+
+          <!-- Footer -->
+          <footer class="modern-footer">
+            <div class="footer-content">
+              <div class="footer-section">
+                <div class="footer-logo">
+                  <mat-icon>school</mat-icon>
+                  <span>AutoEscola Pro</span>
+                </div>
+                <p class="footer-description">
+                  Sistema completo de gerenciamento para autoescolas modernas.
+                </p>
+              </div>
+
+              <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a routerLink="/dashboard">Dashboard</a></li>
+
+                @if(isAdmin){
+                    <li><a routerLink="/instrutor">Instrutores</a></li>
+                    <li><a routerLink="/aluno">Alunos</a></li>
+                    <li><a routerLink="/aula">Aulas</a></li>
+                    <li><a routerLink="/pagamento">Pagamentos</a></li>
+                    <li><a routerLink="/parcela">Parcelas</a></li>
+                }
+                </ul>
+              </div>
+
+              <div class="footer-section">
+                <h4>Contato</h4>
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <mat-icon>phone</mat-icon>
+                    <span>(11) 9999-9999</span>
+                  </div>
+                  <div class="contact-item">
+                    <mat-icon>email</mat-icon>
+                    <span>contato&#64;autoescola.com</span>
+                  </div>
+                  <div class="contact-item">
+                    <mat-icon>location_on</mat-icon>
+                    <span>São Paulo, SP</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="footer-section">
+                <h4>Horário</h4>
+                <div class="schedule">
+                  <p><strong>Segunda - Sexta:</strong> 8h às 18h</p>
+                  <p><strong>Sábado:</strong> 8h às 12h</p>
+                  <p><strong>Domingo:</strong> Fechado</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+              <div class="footer-bottom-content">
+                <p>&copy; 2024 AutoEscola Pro. Todos os direitos reservados.</p>
+                <div class="social-links">
+                  <button mat-icon-button>
+                    <mat-icon>facebook</mat-icon>
+                  </button>
+                  <button mat-icon-button>
+                    <mat-icon>instagram</mat-icon>
+                  </button>
+                  <button mat-icon-button>
+                    <mat-icon>X</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+    </div>
+  } @else {
+    <!-- Conteúdo sem header/footer para páginas de login -->
+  
+    <div class="auth-container">
+      <router-outlet></router-outlet>
+    </div>
+  }
+</div>

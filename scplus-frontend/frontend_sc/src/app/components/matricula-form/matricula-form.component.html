@@ -1,0 +1,94 @@
+<mat-card appearance="outlined">
+    <h1>{{btnTitulo}}</h1>
+    <form [formGroup]="matriculaForm" (ngSubmit)="submit()" #formDit="ngForm" (submit)="$event.preventDefault()">
+
+        @if(dadosMatricula===null){
+            <input type="hidden" formControlName="id">
+            <input type="hidden" formControlName="alunoId">
+        }
+
+        @if(dadosMatricula===null){
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>CPF:</mat-label>
+                    <input matInput type="text" formControlName="cpf" placeholder="Insira o CPF!" 
+                        mask="000.000.000-00" required>
+                    @if (matriculaForm.get('cpf')?.hasError('required')) {
+                        <mat-error>CPF é obrigatório</mat-error>
+                    }
+                    @if (matriculaForm.get('cpf')?.hasError('invalidCpf')) {
+                        <mat-error>CPF inválido</mat-error>
+                    }
+                    @if (matriculaForm.get('cpf')?.hasError('cpfNotExists')) {
+                        <mat-error>CPF não cadastrado no sistema</mat-error>
+                    }
+                    @if (matriculaForm.get('cpf')?.hasError('matriculaExists')) {
+                        <mat-error>Este aluno já possui uma matrícula ativa</mat-error>
+                    }
+                    @if (matriculaForm.get('cpf')?.hasError('isNotAluno')) {
+                        <mat-error>CPF cadastrado, mas não corresponde a um Aluno.</mat-error>
+                    }
+                    @if (matriculaForm.get('cpf')?.hasError('cpfError')) {
+                        <mat-error>Erro na verificação do CPF, entre em contato com um administrador.</mat-error>
+                    }
+                </mat-form-field>
+
+                @if(matriculaForm.get('cpf')?.valid && !matriculaForm.get('cpf')?.pending && dadosMatricula === null) {
+                    <span style="cursor: pointer" (click)="toggleExibirDadosAluno()" >
+                        <mat-icon>{{ exibirDadosAluno ? 'expand_less' : 'expand_more' }}</mat-icon>
+                    </span>
+                }
+            </div>
+        }
+
+        @if(dadosMatricula===null && exibirDadosAluno){
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Nome: </mat-label>
+                    <input matInput type="text" formControlName="nomeCompleto" >
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Telefone: </mat-label>
+                    <input matInput type="text" formControlName="telefone" >
+                </mat-form-field>
+            </div>
+
+            <div class="input_box">
+                <mat-form-field>
+                    <mat-label>Email: </mat-label>
+                    <input matInput type="text" formControlName="email" >
+                </mat-form-field>
+            </div>
+        }
+         
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Plano Contratado:</mat-label>
+                <mat-select id="categoriaPlano" formControlName="categoriaPlano" required>
+                    <mat-option value="A">A</mat-option>
+                    <mat-option value="B">B</mat-option>
+                    <mat-option value="AB">AB</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="input_box">
+            <mat-form-field>
+                <mat-label>Quantidade Total de Aulas:</mat-label>
+                <input matInput type="number" formControlName="quantidadeAulaTotal" placeholder="Insira a quantidade!" required>
+                @if (matriculaForm.get('quantidadeAula')?.hasError('min')) {
+                    <mat-error>A quantidade deve ser maior ou igual a 1</mat-error>
+                }
+            </mat-form-field>
+        </div>
+
+        <div class="btn-box">
+            <button type="submit" [disabled]="!matriculaForm.valid" mat-raised-button class="custom-button">{{btnAcao}}</button>
+            <button routerLink="/matricula" mat-raised-button>Voltar</button>
+        </div>        
+    </form>
+</mat-card>

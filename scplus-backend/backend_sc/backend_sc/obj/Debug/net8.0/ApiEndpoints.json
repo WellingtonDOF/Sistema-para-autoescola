@@ -1,0 +1,1276 @@
+[
+  {
+    "ContainingType": "backend_sc.Controllers.AlunoController",
+    "Method": "GetAlunos",
+    "RelativePath": "api/aluno",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.AlunoDTO.AlunoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AlunoController",
+    "Method": "CreatePessoa",
+    "RelativePath": "api/aluno",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newAluno",
+        "Type": "backend_sc.DTOs.AlunoDTO.AlunoCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.AlunoDTO.AlunoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AlunoController",
+    "Method": "GetAlunosById",
+    "RelativePath": "api/aluno/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.AlunoDTO.AlunoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AlunoController",
+    "Method": "UpdateAluno",
+    "RelativePath": "api/aluno/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "editAluno",
+        "Type": "backend_sc.DTOs.AlunoDTO.AlunoUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.AlunoDTO.AlunoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AlunoController",
+    "Method": "GetAlunoByCpf",
+    "RelativePath": "api/aluno/cpf/{cpf}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.AlunoDTO.AlunoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AlunoController",
+    "Method": "MudarStatusAluno",
+    "RelativePath": "api/aluno/mudar-status/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.AlunoDTO.AlunoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AulaController",
+    "Method": "GetAulas",
+    "RelativePath": "api/aula",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.AulaDTO.AulaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AulaController",
+    "Method": "GetAulasById",
+    "RelativePath": "api/aula/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.AulaDTO.AulaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AulaController",
+    "Method": "UpdateAula",
+    "RelativePath": "api/aula/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "editAula",
+        "Type": "backend_sc.DTOs.AulaDTO.AulaUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.AulaDTO.AulaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "backend_sc.DTOs.LoginDTO.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.LoginDTO.LoginResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AuthController",
+    "Method": "Logout",
+    "RelativePath": "api/auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.AuthController",
+    "Method": "GetCurrentUser",
+    "RelativePath": "api/auth/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.InstrutorController",
+    "Method": "GetInstrutores",
+    "RelativePath": "api/instrutor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.InstrutorDTO.InstrutorResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.InstrutorController",
+    "Method": "CreateInstrutor",
+    "RelativePath": "api/instrutor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newInstrutor",
+        "Type": "backend_sc.DTOs.InstrutorDTO.InstrutorCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.InstrutorDTO.InstrutorResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.InstrutorController",
+    "Method": "GetInstrutorById",
+    "RelativePath": "api/instrutor/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.InstrutorDTO.InstrutorResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.InstrutorController",
+    "Method": "UpdateInstrutor",
+    "RelativePath": "api/instrutor/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "editInstrutor",
+        "Type": "backend_sc.DTOs.InstrutorDTO.InstrutorUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.InstrutorDTO.InstrutorUpdateDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.InstrutorController",
+    "Method": "GetInstrutorByCpf",
+    "RelativePath": "api/instrutor/cpf/{cpf}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.InstrutorDTO.InstrutorResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.InstrutorController",
+    "Method": "MudarStatusInstrutor",
+    "RelativePath": "api/instrutor/mudar-status/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.InstrutorDTO.InstrutorResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.MatriculaController",
+    "Method": "GetMatriculas",
+    "RelativePath": "api/matricula",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.MatriculaDTO.MatriculaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.MatriculaController",
+    "Method": "CreateMatricula",
+    "RelativePath": "api/matricula",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newMatricula",
+        "Type": "backend_sc.DTOs.MatriculaDTO.MatriculaCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.MatriculaDTO.MatriculaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.MatriculaController",
+    "Method": "GetMatriculaById",
+    "RelativePath": "api/matricula/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.MatriculaDTO.MatriculaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.MatriculaController",
+    "Method": "UpdateMatricula",
+    "RelativePath": "api/matricula/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "editMatricula",
+        "Type": "backend_sc.DTOs.MatriculaDTO.MatriculaUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.MatriculaDTO.MatriculaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.MatriculaController",
+    "Method": "MudarStatusMatricula",
+    "RelativePath": "api/matricula/mudar-status/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.MatriculaDTO.MatriculaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.MatriculaController",
+    "Method": "VerificarCpfExistente",
+    "RelativePath": "api/matricula/verificar-cpf/{cpf}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.MatriculaDTO.AlunoParaMatriculaDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PagamentoController",
+    "Method": "GetPagamentos",
+    "RelativePath": "api/pagamento",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.PagamentoDTO.PagamentoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PagamentoController",
+    "Method": "CreatePagamento",
+    "RelativePath": "api/pagamento",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newPagamento",
+        "Type": "backend_sc.DTOs.PagamentoDTO.PagamentoCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.PagamentoDTO.PagamentoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PagamentoController",
+    "Method": "GetPagamentoById",
+    "RelativePath": "api/pagamento/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.PagamentoDTO.PagamentoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PagamentoController",
+    "Method": "UpdatePagamento",
+    "RelativePath": "api/pagamento/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "editPagamento",
+        "Type": "backend_sc.DTOs.PagamentoDTO.PagamentoUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.PagamentoDTO.PagamentoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PagamentoController",
+    "Method": "GetPagamentoByAlunoId",
+    "RelativePath": "api/pagamento/aluno/{alunoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "alunoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.PagamentoDTO.PagamentoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PagamentoController",
+    "Method": "CancelarPagamento",
+    "RelativePath": "api/pagamento/cancelar/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.PagamentoDTO.PagamentoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PagamentoController",
+    "Method": "GetPagamentosPorStatus",
+    "RelativePath": "api/pagamento/status/{status}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.PagamentoDTO.PagamentoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PagamentoController",
+    "Method": "GetPagamentosVencidos",
+    "RelativePath": "api/pagamento/vencidos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.PagamentoDTO.PagamentoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.ParcelaController",
+    "Method": "GetParcelas",
+    "RelativePath": "api/parcela",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.ParcelaDTO.ParcelaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.ParcelaController",
+    "Method": "CreateParcela",
+    "RelativePath": "api/parcela",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newParcela",
+        "Type": "backend_sc.DTOs.ParcelaDTO.ParcelaCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.ParcelaDTO.ParcelaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.ParcelaController",
+    "Method": "GetParcelaById",
+    "RelativePath": "api/parcela/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.ParcelaDTO.ParcelaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.ParcelaController",
+    "Method": "UpdateParcela",
+    "RelativePath": "api/parcela/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "editParcela",
+        "Type": "backend_sc.DTOs.ParcelaDTO.ParcelaUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.ParcelaDTO.ParcelaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.ParcelaController",
+    "Method": "MarcarComoPaga",
+    "RelativePath": "api/parcela/marcar-paga/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "valorPago",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.ParcelaDTO.ParcelaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.ParcelaController",
+    "Method": "GetParcelasByPagamentoId",
+    "RelativePath": "api/parcela/pagamento/{pagamentoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagamentoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.ParcelaDTO.ParcelaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.ParcelaController",
+    "Method": "GetParcelasVencendoEm",
+    "RelativePath": "api/parcela/vencendo-em/{dias}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dias",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.ParcelaDTO.ParcelaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.ParcelaController",
+    "Method": "GetParcelasVencidas",
+    "RelativePath": "api/parcela/vencidas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.ParcelaDTO.ParcelaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PessoaController",
+    "Method": "GetPessoas",
+    "RelativePath": "api/pessoa",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.PessoaDTO.PessoaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PessoaController",
+    "Method": "CreatePessoa",
+    "RelativePath": "api/pessoa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newPessoa",
+        "Type": "backend_sc.DTOs.PessoaDTO.PessoaCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.PessoaDTO.PessoaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PessoaController",
+    "Method": "GetPessoaById",
+    "RelativePath": "api/pessoa/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.PessoaDTO.PessoaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PessoaController",
+    "Method": "InativarPessoa",
+    "RelativePath": "api/pessoa/inativar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.PessoaDTO.PessoaResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.PessoaController",
+    "Method": "VerificarCpfExistente",
+    "RelativePath": "api/pessoa/verificar-cpf/{cpf}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpf",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.VeiculoController",
+    "Method": "GetVeiculos",
+    "RelativePath": "api/veiculo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[System.Collections.Generic.List\u00601[[backend_sc.DTOs.VeiculoDTO.VeiculoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.VeiculoController",
+    "Method": "CreateVeiculo",
+    "RelativePath": "api/veiculo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newVeiculo",
+        "Type": "backend_sc.DTOs.VeiculoDTO.VeiculoCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.VeiculoDTO.VeiculoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.VeiculoController",
+    "Method": "GetVeiculoById",
+    "RelativePath": "api/veiculo/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.VeiculoDTO.VeiculoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.VeiculoController",
+    "Method": "UpdateVeiculo",
+    "RelativePath": "api/veiculo/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "editVeiculo",
+        "Type": "backend_sc.DTOs.VeiculoDTO.VeiculoUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.VeiculoDTO.VeiculoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.VeiculoController",
+    "Method": "InativarVeiculo",
+    "RelativePath": "api/veiculo/mudar-status/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "backend_sc.Models.ServiceResponse\u00601[[backend_sc.DTOs.VeiculoDTO.VeiculoResponseDTO, backend_sc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "backend_sc.Controllers.VeiculoController",
+    "Method": "VerificarCpfExistente",
+    "RelativePath": "api/veiculo/verificar-placa/{placa}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placa",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
