@@ -28,11 +28,6 @@ O sistema incluirá as seguintes funcionalidades:
 - Sistema de Controle de Versão: Git
 - Plataforma de Hospedagem de Código: GitHub
 
-### Próximos Passos
-- Implementar as funcionalidades de **pagamento** e **login**.
-- Realizar testes e correções.
-- Implementar a autenticação e autorização de usuários.
-
 ### Informações de Contato
 **Desenvolvedor:** Wellington Fonseca
 - Email: wellington05092003@gmail.com
